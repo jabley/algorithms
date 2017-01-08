@@ -1,4 +1,4 @@
-Exercises for [Algorithms, Version 4](https://www.amazon.co.uk/gp/product/B004P8J1NA/)
+Exercises for [Algorithms, 4th Edition](http://algs4.cs.princeton.edu/home/)
 
 ## Getting started
 
