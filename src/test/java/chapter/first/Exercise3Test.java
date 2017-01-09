@@ -2,6 +2,8 @@ package chapter.first;
 
 import org.junit.Test;
 
+import java.io.StringReader;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -22,5 +24,19 @@ public class Exercise3Test {
         assertThat(stack.size(), is(equalTo(5)));
         String value = stack.pop();
         assertThat(value, is(equalTo("5")));
+    }
+
+    @Test
+    public void balancedParethesesSucceed() {
+        String input = "[()]{}{[()()]()}";
+        Parentheses p = new Parentheses(new StringReader(input));
+        assertThat(p.parse().getFailureReason(), is(nullValue()));
+    }
+
+    @Test
+    public void unbalancedParethesesAreDetected() {
+        String input = "[(])";
+        Parentheses p = new Parentheses(new StringReader(input));
+        assertThat(p.parse().getFailureReason(), is(notNullValue()));
     }
 }
