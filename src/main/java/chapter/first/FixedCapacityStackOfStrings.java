@@ -12,6 +12,10 @@ public class FixedCapacityStackOfStrings {
       return N == 0;
     }
 
+    public boolean isFull() {
+      return N == this.a.length;
+    }
+
     public int size() {
       return N;
     }
