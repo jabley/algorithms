@@ -39,4 +39,11 @@ public class Exercise3Test {
         Parentheses p = new Parentheses(new StringReader(input));
         assertThat(p.parse().getFailureReason(), is(notNullValue()));
     }
+
+    @Test
+    public void missingLeadingParenthesesCanBeCorrected() {
+        String input = "1+2)*3+4)*5-6)))";
+        String output = new ParenthesesCorrector(input).correct();
+        assertThat(output, is(equalTo("((1+2)*((3+4)*(5-6)))")));
+    }
 }
