@@ -42,7 +42,7 @@ public class Exercise3Test {
 
     @Test
     public void missingLeadingParenthesesCanBeCorrected() {
-        String input = "1+2)*3+4)*5-6)))";
+        String input = "1 +2)*3+4)*5-6)))";
         String output = new ParenthesesCorrector(input).correct();
         assertThat(output, is(equalTo("((1+2)*((3+4)*(5-6)))")));
     }
