@@ -46,4 +46,12 @@ public class Exercise3Test {
         String output = new ParenthesesCorrector(input).correct();
         assertThat(output, is(equalTo("((1+2)*((3+4)*(5-6)))")));
     }
+
+    @Test
+    public void infixToPostfix() {
+        String input = "( 2 + ( ( 3 + 4 ) * ( 5 * 6 ) ) )";
+        String output = new InfixToPostfix().convert(input);
+        assertThat(output, is(equalTo("2 3 4 + 5 6 * * + ")));
+    }
+
 }
