@@ -29,7 +29,7 @@ public class ArithmeticExpressionScannerFactory {
          * time, and it's not the point of this exercise.
          */
 
-        return Arrays.stream(new String[]{"+", "-", "/", "*", ")", "("})
+        return Arrays.stream(new String[]{" ", "+", "-", "/", "*", ")", "("})
                 .map(token -> String.format(WITH_DELIMITER, token))
                 .collect(Collectors.joining("|"));
     }

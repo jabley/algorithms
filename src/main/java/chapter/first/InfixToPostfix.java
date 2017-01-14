@@ -1,11 +1,8 @@
 package chapter.first;
 
 import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.io.StringReader;
-import java.util.Scanner;
 import java.util.function.Consumer;
 
 /**
@@ -13,30 +10,12 @@ import java.util.function.Consumer;
  */
 public class InfixToPostfix {
 
-    interface TokenSupplier {
-        boolean hasNext();
-
-        String next();
-    }
-
     public String convert(String input) {
-        Scanner scanner = ArithmeticExpressionScannerFactory.create(new StringReader(input));
-
         StringBuilder buf = new StringBuilder();
 
         Consumer<String> writer = buf::append;
 
-        TokenSupplier supplier = new TokenSupplier() {
-            @Override
-            public boolean hasNext() {
-                return scanner.hasNext();
-            }
-
-            @Override
-            public String next() {
-                return scanner.next().trim();
-            }
-        };
+        TokenSupplier supplier = new StringTokenSupplier(input);
 
         fixup(supplier, writer);
 
@@ -64,20 +43,6 @@ public class InfixToPostfix {
     }
 
     public static void main(String[] args) {
-        Consumer<String> writer = StdOut::print;
-
-        TokenSupplier supplier = new TokenSupplier() {
-            @Override
-            public boolean hasNext() {
-                return !StdIn.isEmpty();
-            }
-
-            @Override
-            public String next() {
-                return StdIn.readString();
-            }
-        };
-
-        new InfixToPostfix().fixup(supplier, writer);
+        new InfixToPostfix().fixup(new StdInTokenSupplier(), StdOut::print);
     }
 }

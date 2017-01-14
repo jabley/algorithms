@@ -2,11 +2,6 @@ package chapter.first;
 
 import edu.princeton.cs.algs4.Stack;
 
-import java.io.StringReader;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-
 public class ParenthesesCorrector {
 
     private final String input;
@@ -20,10 +15,14 @@ public class ParenthesesCorrector {
     public String correct() {
         StringBuilder buf = new StringBuilder(input.length() + 16);
 
-        Scanner scanner = ArithmeticExpressionScannerFactory.create(new StringReader(this.input));
+        TokenSupplier supplier = new StringTokenSupplier(input);
 
-        while (scanner.hasNext()) {
-            String token = scanner.next().trim();
+        while (supplier.hasNext()) {
+            String token = supplier.next();
+
+            if (token.length() == 0) {
+                continue;
+            }
 
             if (")".equals(token)) {
                 rewindAndReplace();
