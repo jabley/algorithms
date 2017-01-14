@@ -54,4 +54,11 @@ public class Exercise3Test {
         assertThat(output, is(equalTo("2 3 4 + 5 6 * * + ")));
     }
 
+    @Test
+    public void evaluatePostFix() {
+        String input = "2 3 4 + 5 6 * * + ";
+        int output = new EvaluatePostfix().eval(input);
+        assertThat(output, is(equalTo(212)));
+    }
+
 }
