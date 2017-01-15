@@ -2,6 +2,8 @@ package chapter.first;
 
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.Iterator;
+
 public class ParenthesesCorrector {
 
     private final String input;
@@ -15,7 +17,7 @@ public class ParenthesesCorrector {
     public String correct() {
         StringBuilder buf = new StringBuilder(input.length() + 16);
 
-        TokenSupplier supplier = new StringTokenSupplier(input);
+        Iterator<String> supplier = new StringTokenSupplier(input);
 
         while (supplier.hasNext()) {
             String token = supplier.next();

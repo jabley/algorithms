@@ -3,6 +3,7 @@ package chapter.first;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.Iterator;
 import java.util.function.Consumer;
 
 /**
@@ -22,7 +23,7 @@ public class InfixToPostfix {
         return buf.toString();
     }
 
-    private void fixup(TokenSupplier supplier, Consumer<String> writer) {
+    private void fixup(Iterator<String> supplier, Consumer<String> writer) {
         Stack<String> items = new Stack<>();
 
         while (supplier.hasNext()) {

@@ -1,12 +1,13 @@
 package chapter.first;
 
 import java.io.StringReader;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
  *
  */
-public class StringTokenSupplier implements TokenSupplier {
+public class StringTokenSupplier implements Iterator<String> {
 
     private final Scanner scanner;
 

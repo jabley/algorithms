@@ -2,6 +2,8 @@ package chapter.first;
 
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.Iterator;
+
 /**
  *
  */
@@ -10,7 +12,7 @@ public class EvaluatePostfix {
         return eval(new StringTokenSupplier(input));
     }
 
-    private int eval(TokenSupplier supplier) {
+    private int eval(Iterator<String> supplier) {
         Stack<Integer> values = new Stack<>();
 
         while (supplier.hasNext()) {
