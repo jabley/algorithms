@@ -14,11 +14,7 @@ public class InfixToPostfix {
     public String convert(String input) {
         StringBuilder buf = new StringBuilder();
 
-        Consumer<String> writer = buf::append;
-
-        TokenSupplier supplier = new StringTokenSupplier(input);
-
-        fixup(supplier, writer);
+        fixup(new StringTokenSupplier(input), buf::append);
 
         return buf.toString();
     }
