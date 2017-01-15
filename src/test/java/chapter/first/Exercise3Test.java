@@ -61,4 +61,11 @@ public class Exercise3Test {
         assertThat(output, is(equalTo(212)));
     }
 
+    @Test
+    public void pipeInfixToPostfixToEvaluate() {
+        String input = "( 2 + ( ( 3 + 4 ) * ( 5 * 6 ) ) )";
+        int output = new EvaluatePostfix().eval(new InfixToPostfix().convert(input));
+        assertThat(output, is(equalTo(212)));
+    }
+
 }
