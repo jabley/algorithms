@@ -18,9 +18,6 @@ public class EvaluatePostfix {
         while (supplier.hasNext()) {
             String token = supplier.next();
 
-            if (token.length() == 0) {
-                continue;
-            }
             if ("*".equals(token)) {
                 values.push(values.pop() * values.pop());
             } else if ("+".equals(token)) {

@@ -29,10 +29,6 @@ public class InfixToPostfix {
         while (supplier.hasNext()) {
             String token = supplier.next();
 
-            if (token.length() == 0) {
-                continue;
-            }
-
             if ("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token)) {
                 items.push(token);
             } else if (")".equals(token)) {

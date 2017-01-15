@@ -22,10 +22,6 @@ public class ParenthesesCorrector {
         while (supplier.hasNext()) {
             String token = supplier.next();
 
-            if (token.length() == 0) {
-                continue;
-            }
-
             if (")".equals(token)) {
                 rewindAndReplace();
             } else {
