@@ -3,6 +3,7 @@ package chapter.first;
 import org.junit.Test;
 
 import java.io.StringReader;
+import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
@@ -66,6 +67,12 @@ public class Exercise3Test {
         String input = "( 2 + ( ( 3 + 4 ) * ( 5 * 6 ) ) )";
         int output = new EvaluatePostfix().eval(new InfixToPostfix().convert(input));
         assertThat(output, is(equalTo(212)));
+    }
+
+    @Test
+    public void josephusSurvivesTheCull() {
+        String output = Arrays.toString(new Josephus(2, 7).eliminationSequence());
+        assertThat(output, is(equalTo("[1, 3, 5, 0, 4, 2, 6]")));
     }
 
 }
