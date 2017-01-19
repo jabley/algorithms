@@ -43,8 +43,7 @@ public class Josephus {
     }
 
     private Integer getNext() {
-        int count = 0;
-        for (;count < (this.m - 1); count++) {
+        for (int i = 0; i < (this.m - 1); i++) {
             this.circle.enqueue(this.circle.dequeue());
         }
         return this.circle.dequeue();
