@@ -9,6 +9,8 @@ public class LinkedListGeneralizedQueue<T> implements GeneralizedQueue<T> {
 
     private Node<T> first;
 
+    private Node<T> last;
+
     public LinkedListGeneralizedQueue() {
 
     }
@@ -20,14 +22,21 @@ public class LinkedListGeneralizedQueue<T> implements GeneralizedQueue<T> {
 
     @Override
     public void insert(T item) {
-        size++;
-        if (first == null) {
-            first = new Node<T>(item, null, null);
-            return;
+        linkLast(item);
+    }
+
+    private void linkLast(T item) {
+        Node<T> l = last;
+        Node<T> newNode = new Node<T>(item, l, null);
+
+        if (l == null) {
+            first = newNode;
+        } else {
+            l.next = newNode;
         }
 
-        Node<T> last = getLast();
-        last.next = new Node<T>(item, last, null);
+        last = newNode;
+        size++;
     }
 
     @Override
@@ -56,27 +65,30 @@ public class LinkedListGeneralizedQueue<T> implements GeneralizedQueue<T> {
     }
 
     private Node<T> node(int k) {
-        Node<T> n = first;
 
-        for (int i = 0; i < k; i++) {
-            n = n.next;
+        // Check whether we will be quicker walking forwards or backwards
+        if (k < (size >> 1)) {
+            Node<T> n = first;
+
+            for (int i = 0; i < k; i++) {
+                n = n.next;
+            }
+
+            return n;
+        } else {
+           Node<T> n = last;
+           for (int i = size - 1; i > k; i--) {
+               n = n.prev;
+           }
+
+           return n;
         }
-
-        return n;
     }
 
     private void rangeCheck(int k) {
         if (k >= size) {
             throw new IllegalArgumentException(String.format("Index: %d, Size: %d", k, size));
         }
-    }
-
-    public Node<T> getLast() {
-        Node<T> current = first;
-        while (current.next != null) {
-            current = current.next;
-        }
-        return current;
     }
 
     private static class Node<T> {
